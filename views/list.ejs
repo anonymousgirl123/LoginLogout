@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('./common/stylesheets') %>
+</head>
+<body>
+
+<div class="container">
+  <h2>welcome <%= title %></h2>
+  
+  <button type="button" class="btn btn-success" id ="btn">logout</button>
+</div>
+
+</body>
+</html>
+<%- include('./common/javascripts') %>
+<script>
+$(document).ready(function() {
+    $('#btn').click(function () {
+  // alert(data);
+        $.ajax({
+        type:"GET",
+        url:"/destroy",
+        
+        //dataType: 'json',  // multiple data sent using ajax
+        success: function (result) {
+          //alert(result);
+        window.location='/login';
+        }
+        });
+    });
+});
+</script>

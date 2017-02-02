@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('./common/javascripts') %>
+
+  <link rel="stylesheet" type="text/css"     href="/pnotify.custom.min.css">
+<script src="/pnotify.custom.min.js"></script>
+  <%- include('./common/stylesheets') %>
+
+</head>
+<body>
+
+<div class="container">
+  <h2><%= title %></h2>
+  <p>The form below contains two input elements; one of type text and one of type password:</p>
+    <div class="form-group">
+      <label for="usr">Email ID:</label>
+      <input type="text" class="form-control" id="emailid">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+  <button type="button" class="btn btn-success" id ="btn">Success</button>
+</div>
+
+</body>
+</html>
+<script>
+$(document).ready(function() {
+    $('#btn').click(function () {
+
+          var data = {
+            email : $("#emailid").val(),
+            password : $("#password").val()
+          };          
+      console.log(data);
+        $.ajax({
+        type:"POST",
+        url:"/admin_login",
+        data :  data, 
+        //dataType: 'json',  // multiple data sent using ajax
+        success: function (result) {
+          if(result.error==false){
+
+        window.location='/list/';
+
+          new PNotify({
+        title: 'Login Notice',
+        text: result,
+        type : 'success'
+
+    });
+          }
+          else{  //alert(result);
+          new PNotify({
+        title: 'Login Notice',
+        text: result,
+        type : 'error',
+        icon : 'fa fa-envelope-o'
+
+    });
+          }
+        
+        }
+        });
+    });
+});
+</script>
