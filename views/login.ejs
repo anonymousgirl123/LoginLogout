@@ -46,19 +46,20 @@ $(document).ready(function() {
         success: function (result) {
           if(result.error==false){
 
-        window.location='/list/';
+        
 
           new PNotify({
         title: 'Login Notice',
-        text: result,
-        type : 'success'
-
-    });
+        text: 'user logged in',
+        type : 'success',
+        delay : 50000
+        });
+          window.location='/list/';
           }
           else{  //alert(result);
           new PNotify({
         title : 'Login Notice',
-        text  : result,
+        text  : 'user logged in',
         type  : 'error',
         icon  : 'fa fa-envelope-o'
 

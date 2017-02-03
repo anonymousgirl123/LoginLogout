@@ -4,8 +4,14 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('./common/javascripts') %>
+
+  <link rel="stylesheet" type="text/css"     href="/pnotify.custom.min.css">
+<script src="/pnotify.custom.min.js"></script>
   <%- include('./common/stylesheets') %>
+
 </head>
+
 <body>
 
 <div class="container">
@@ -28,6 +34,13 @@ $(document).ready(function() {
         //dataType: 'json',  // multiple data sent using ajax
         success: function (result) {
           //alert(result);
+          new PNotify({
+        title: 'Logout Notice',
+        text: 'successfully logged out',
+        type : 'success',
+        delay : 50000
+
+    });
         window.location='/login';
         }
         });
