@@ -1,2 +1,2 @@
-web: node
+web: node ./bin/www
 
