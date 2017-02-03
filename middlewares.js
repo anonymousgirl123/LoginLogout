@@ -6,7 +6,7 @@ res.redirect('/login');
 	}
 	if(req.session!=""){
 		console.log("user already logged in");
-		res.redirect('/list');
+		//res.redirect('/list');
 	}
 	next();
 }
