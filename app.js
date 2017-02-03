@@ -9,7 +9,7 @@ var session = require('express-session');//managing sessions
 var mailer = require('express-mailer');
 // var helmet = require('helmet');
 
-var config = require('./config')[process.env.NODE_ENV || 'development'];
+var config = require('./config')[process.env.NPM_CONFIG_PRODUCTION || 'development'];
 
 var routes = require('./routes/web/index');
 // var users = require('./routes/users');
