@@ -18,7 +18,7 @@ var app = express();
 
 // For Prod usage (SECURITY)
 // app.use(helmet())
-
+/*
 mailer.extend(app, {
   from: config.email.from,
   host: config.email.host, // hostname
@@ -30,7 +30,7 @@ mailer.extend(app, {
     pass: config.email.auth.pass
   }
 });
-
+*/
 mongoose.Promise = global.Promise;
 mongoose.connect(config.database);
 
