@@ -13,8 +13,8 @@ var middlewares = require('../../middlewares');
 	next();
 }*/
 router.get('/', function(req, res, next) {
-	console.log("Welcome to LS");
-  res.render('index', { title: 'Welcome to LS' });
+	
+  res.render('index', { title: 'Welcome to HOME PAGE' });
 
 });
 router.get('/list', middlewares.authenticate, signup.abc);
