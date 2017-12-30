@@ -3,9 +3,43 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('./common/javascripts') %>
+
+    <link rel="stylesheet" type="text/css"     href="/pnotify.custom.min.css">
+  <script src="/pnotify.custom.min.js"></script>
+    <%- include('./common/stylesheets') %>
+
   </head>
   <body>
     <h1><%= title %></h1>
     <p><%= title %></p>
+    <button type="button" class="btn btn-success" id ="submit">SUBMIT FORM</button>
+    <button type="button" class="btn btn-success" id ="result">SEE RESULT</button>
   </body>
 </html>
+<script>
+$(document).ready(function() {
+    $('#submit').click(function () {
+      window.location='/signup/'
+        });
+
+    $('#result').click(function () {
+      $.ajax({
+      type:"GET",
+      url:"/user_info",
+
+      success: function (result) {
+        if(result.error==true){
+          alert("failed to fetch data");
+          //window.location='/'
+        }
+        else{
+        window.location='/user_info';
+        }
+
+      }
+      });
+
+        });
+    });
+</script>

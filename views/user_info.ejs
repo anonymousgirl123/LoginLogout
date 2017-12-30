@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('./common/javascripts') %>
+
+  <link rel="stylesheet" type="text/css"     href="/pnotify.custom.min.css">
+<script src="/pnotify.custom.min.js"></script>
+  <%- include('./common/stylesheets') %>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <% data.forEach(function(user){ %>
+  <div style="border:1px solid black">  
+    <p><span><%= user.name.first %> <%= user.name.last %></span></p>
+    <p><span><%= user.email %> <%= user.phone %></span></p>
+  </div>
+  <% })%>
+</div>
+
+</body>
+</html>

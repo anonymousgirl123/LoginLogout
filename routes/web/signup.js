@@ -1,8 +1,19 @@
-var User = require("../../models/user"); 
+var User = require("../../models/user");
 module.exports = {
 	first : function (req, res){
 		res.render('signup');
 	},
+	view: function (req, res){
+		User.find({}, function (err, docs) {
+  		if(err){
+				res.send({error: true})
+			}
+			else{
+				res.render('user_info', {data: docs});
+			}
+		});
+	},
+
 	second : function (req, res){
 		var data = req.body;
 		console.log(data);
@@ -16,24 +27,17 @@ module.exports = {
 				console.log(val);
 			}
 		});
-   /* var uname1 = req.body.fname;
-    var uname2 = req.body.flast;
-    var uemail = req.body.fmail;
-    var fpassword = req.body.fpassword;
-*/
-    //console.log(uname1, uname2, uemail, fpassword);
-    
-	   res.send('user signed up');
-	   res.render('login');
+	   res.send({data: 'user signed up', status:200});
+
     },
     abc : function (req, res){
 		var n = req.session.name;
-		
+
 		res.render('list', {title : n});
 	},
 	xyz : function (req, res){
 		req.session.destroy();
 		res.render('login', {title : "user logged out"});
 		}
-    
+
 }

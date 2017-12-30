@@ -13,13 +13,14 @@ var middlewares = require('../../middlewares');
 	next();
 }*/
 router.get('/', function(req, res, next) {
-	
+
   res.render('index', { title: 'Welcome to HOME PAGE' });
 
 });
 router.get('/list', middlewares.authenticate, signup.abc);
 router.get('/destroy', signup.xyz);
 router.get('/signup', signup.first);
+router.get('/user_info', signup.view);
 router.post('/admin_function', signup.second);
 router.get('/login', login.first);
 router.post('/admin_login', login.second);
