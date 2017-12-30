@@ -4,7 +4,7 @@ module.exports = {
 		res.render('signup');
 	},
 	view: function (req, res){
-		User.find({}, function (err, docs) {
+		User.find({}).sort({_id: -1}).exec(function (err, docs) {
   		if(err){
 				res.send({error: true})
 			}
