@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var signup = require('./signup');
 var login = require('./login');
+var MyModel = require("../../models/selectedModel")
 var middlewares = require('../../middlewares');
 /* GET home page. */
 /*var authenticate = function (req, res, next){
@@ -17,6 +18,32 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Welcome to HOME PAGE' });
 
 });
+router.post('/setModel', function(req, res){
+  console.log("req.body", req.body.model);
+  var newModel = new MyModel(req.body);
+  newModel.save()
+  .then(data => {
+    console.log("data", data);
+    res.json({response: data, status: 200})
+  })
+  .catch(err => {
+    console.log("err", err);
+    res.json({error: err, status: 404})
+  })
+});
+
+router.get('/getModel', function(req, res){
+  MyModel.find({})
+  .then(data => {
+    console.log("data", data, data[data.length-1]);
+    res.json({response: data[data.length-1], status: 200})
+  })
+  .catch( err => {
+    console.log("err", err);
+    res.json({error: err, status: 404})
+  })
+});
+
 router.get('/list', middlewares.authenticate, signup.abc);
 router.get('/destroy', signup.xyz);
 router.get('/signup', signup.first);
