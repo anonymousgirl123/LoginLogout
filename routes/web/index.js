@@ -61,8 +61,8 @@ router.post('/setAllTwitterList', function(req, res){
 });
 
 //fetching 5 tweets at once
-router.get('/twitterPagination', function(req, res){
-  TwitterModel.find().skip(5)
+router.get('/twitterPagination/:uid', function(req, res){
+  TwitterModel.find({uid: req.params.uid}).skip(5)
   .then((data) => {
     res.send({response: data, status: 200})
   })

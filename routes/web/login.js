@@ -1,5 +1,6 @@
  var User = require("../../models/user"); 
  var moment = require('moment');
+ 
 module.exports = {
 
 	first : function (req, res){
@@ -7,10 +8,18 @@ module.exports = {
 	},
 	second :  function (req, res){
 		var data = req.body;
-		console.log(data.password);
-		User.findOne({email : data.email}).exec(function (err, val){
+		console.log(data.uid);
+		var newuser = new User(data);
+		User.findOne({uid : req.body.uid}).exec(function (err, val){
 			if(val=="" || val==null){
-				return res.send("No such user exists");
+				newuser.save()
+				.then((data) => {
+					res.send({response: data, status: 200})
+				})
+				.catch((err) => {
+					res.send({response: err, status: 500})
+				})
+				// return res.send("No such user exists");
 			}
 			if(err){
 				console.log("error");

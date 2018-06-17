@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var User = require("./user");
 var userType = mongoose.Schema({
-      "pagination_index": {type: Number, Boolean: null},
+     // "pagination_index": {type: Number, Boolean: null},
       "follow_request_sent": {type: Boolean, default: false},
       "profile_use_background_image": {type: String, default: false},
       "default_profile_image": {type: String, default: false},

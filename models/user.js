@@ -5,42 +5,14 @@ var bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new mongoose.Schema({
 
-
-  email: {
-      type: String,
-      lowercase: true,
-      unique: true,
-      required: true
-  },
-  auth_credential: {
-        type: String,
-        default:'',
-        unique: true
-  },
-
-  password: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: String,
-    required: true
-  },
-  isActive: {
-    type: Boolean,
-    default: true
-  },
-
-  name: {
-   first: {
-     type: String,
-   },
-   last: {
-     type: String
-   },
-  },
-
-
+    displayName: {type: String, default: null},
+    uid: {type: String, default: null, unique: true},
+    email: {type: String, default: null},
+    photoURL: {type: String, default: null},
+    providerId: {type: String, default: null},
+    phoneNumber: {type: String, default: null},
+    password: {type: String, default: null}
+    
 });
 
 // Save user's hashed password
