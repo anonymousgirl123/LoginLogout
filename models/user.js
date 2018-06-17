@@ -12,6 +12,11 @@ var UserSchema = new mongoose.Schema({
       unique: true,
       required: true
   },
+  auth_credential: {
+        type: String,
+        default:'',
+        unique: true
+  },
 
   password: {
     type: String,

@@ -4,6 +4,7 @@ var signup = require('./signup');
 var login = require('./login');
 var MyModel = require("../../models/selectedModel")
 var middlewares = require('../../middlewares');
+var TwitterModel = require('../../models/twitter');
 /* GET home page. */
 /*var authenticate = function (req, res, next){
 	if(req.session.name==undefined){
@@ -43,6 +44,33 @@ router.get('/getModel', function(req, res){
     res.json({error: err, status: 404})
   })
 });
+
+//save the entire data in database
+
+router.post('/setAllTwitterList', function(req, res){
+  var newModel = new TwitterModel(req.body.data);
+  newModel.save()
+  .then(data => {
+    console.log("data saved", data);
+    res.json({response: data, status: 200})
+  })
+  .catch((err) => {
+    console.log("err", err);
+    res.send({response: err, status: 500});
+  })
+});
+
+//fetching 5 tweets at once
+router.get('/twitterPagination', function(req, res){
+  TwitterModel.find().skip(5)
+  .then((data) => {
+    res.send({response: data, status: 200})
+  })
+  .catch((err => {
+    res.send({response: err, status: 500})
+    console.log("err::", err);
+  }))
+})
 
 router.get('/list', middlewares.authenticate, signup.abc);
 router.get('/destroy', signup.xyz);
