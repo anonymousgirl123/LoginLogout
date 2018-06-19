@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');//managing sessions
 var mailer = require('express-mailer');
+var cors = require('cors');
 // var helmet = require('helmet');
 
 var config = require('./config')[process.env.NPM_CONFIG_PRODUCTION || 'development'];
@@ -15,6 +16,14 @@ var routes = require('./routes/web/index');
 // var users = require('./routes/users');
 
 var app = express();
+
+var corsOption = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  exposedHeaders: ['x-auth-token']
+};
+app.use(cors(corsOption));
 
 // For Prod usage (SECURITY)
 // app.use(helmet())
