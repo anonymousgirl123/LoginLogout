@@ -6,7 +6,7 @@ module.exports = {
     "siteUrl": "http://localhost:3000",
     "email": {
       "from": "s26c.sayan@gmail.com",
-      "host": "smtp-pulse.com",
+      "host": "smtp-pulse.com", 
       "port": 465,
       "auth": {
         "user": "s26c.sayan@gmail.com",

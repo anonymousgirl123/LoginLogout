@@ -9,54 +9,54 @@ var UserSchema = new mongoose.Schema({
     uid: {type: String, default: null, unique: true},
     email: {type: String, default: null},
     photoURL: {type: String, default: null},
-    providerId: {type: String, default: null},
+    accessToken: {type: String, default: null},
     phoneNumber: {type: String, default: null},
-    password: {type: String, default: null}
-    
+    password: {type: String, default: null},
+    //count: {type: Number, default: 0}
 });
 
 // Save user's hashed password
-UserSchema.pre('save', function (next) {
-    var user = this;
-    if (this.isModified('password') || this.isNew) {
-        bcrypt.genSalt(10, function (err, salt) {
-            if (err) {
-                return next(err);
-            }
-            bcrypt.hash(user.password, salt, function () {
+// UserSchema.pre('save', function (next) {
+//     var user = this;
+//     if (this.isModified('password') || this.isNew) {
+//         bcrypt.genSalt(10, function (err, salt) {
+//             if (err) {
+//                 return next(err);
+//             }
+//             bcrypt.hash(user.password, salt, function () {
 
-            }, function (err, hash) {
-                if (err) {
-                    return next(err);
-                }
-                // saving actual password as hash
-                user.password = hash;
-                next();
-            });
-        });
-    } else {
-        return next();
-    }
-});
+//             }, function (err, hash) {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//                 // saving actual password as hash
+//                 user.password = hash;
+//                 next();
+//             });
+//         });
+//     } else {
+//         return next();
+//     }
+// });
 
 // compare two passwords
 
-UserSchema.methods.comparePassword = function (pw, cb) {
-    bcrypt.compare(pw, this.password, function (err, isMatch) {
-        if (err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
-};
+// UserSchema.methods.comparePassword = function (pw, cb) {
+//     bcrypt.compare(pw, this.password, function (err, isMatch) {
+//         if (err) {
+//             return cb(err);
+//         }
+//         cb(null, isMatch);
+//     });
+// };
 
-UserSchema.virtual('name.full').get(function () {
-  var last = (this.name.last === undefined || this.name.last === null) ? '' : this.name.last;
-  return this.name.first + ' ' + last;
-});
+// UserSchema.virtual('name.full').get(function () {
+//   var last = (this.name.last === undefined || this.name.last === null) ? '' : this.name.last;
+//   return this.name.first + ' ' + last;
+// });
 
-UserSchema.set('toJSON', {virtuals: true});
-UserSchema.set('toObject', {virtuals: true});
+// UserSchema.set('toJSON', {virtuals: true});
+// UserSchema.set('toObject', {virtuals: true});
 
 
 module.exports = mongoose.model('User', UserSchema);

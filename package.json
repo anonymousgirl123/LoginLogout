@@ -17,16 +17,18 @@
     "express-session": "^1.14.1",
     "helmet": "^3.4.0",
     "jsonwebtoken": "^7.1.9",
-    "lodash": "^4.15.0",
+    "lodash": "^4.17.10",
     "moment": "^2.14.1",
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
     "multer": "^1.2.0",
     "node-notifier": "^5.0.2",
+    "promise": "^8.0.1",
     "randomstring": "^1.1.5",
     "serve-favicon": "~2.3.0",
     "shortid": "^2.2.6",
-    "tinyurl": "^1.1.2"
+    "tinyurl": "^1.1.2",
+    "twit": "^2.2.10"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
