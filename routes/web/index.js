@@ -172,7 +172,7 @@ router.get("/getUserTweets/:userid", function(req, res){
 }*/
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'Welcome to HOME PAGE' });
+  res.render('index', { title: 'Welcome toupVoteTweet HOME PAGE' });
 
 });
 router.post('/setModel', function(req, res){
@@ -216,6 +216,17 @@ router.post('/setAllTwitterList', function(req, res){
   })
 });
 
+//fetching tweets by id
+router.get('/twitter/:id', function(req, res){
+  TwitterModel.findOne({feed_id: req.params.id})
+  .then((data) => {
+    res.send({response: data, status: 200})
+  })
+  .catch((err => {
+    res.send({response: err, status: 500})
+    console.log("err::", err);
+  }))
+})
 //fetching 5 tweets at once
 router.get('/twitterPagination/:uid', function(req, res){
   TwitterModel.find({uid: req.params.uid}).skip(5)
