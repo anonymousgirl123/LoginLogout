@@ -19,7 +19,7 @@
     "generate-safe-id": "^1.0.3",
     "helmet": "^3.4.0",
     "jsonwebtoken": "^7.1.9",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "moment": "^2.14.1",
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
