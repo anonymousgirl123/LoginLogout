@@ -20,7 +20,7 @@
     "helmet": "^3.4.0",
     "jsonwebtoken": "^7.1.9",
     "lodash": "^4.17.10",
-    "moment": "^2.14.1",
+    "moment": "^2.29.2",
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
     "multer": "^1.2.0",
