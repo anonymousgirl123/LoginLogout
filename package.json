@@ -34,9 +34,9 @@
     "twit": "^2.2.10"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-livereload": "^3.8.1",
-    "gulp-nodemon": "^2.1.0",
+    "gulp-nodemon": "^2.5.0",
     "gulp-notify": "^2.2.0"
   }
 }
